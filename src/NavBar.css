@@ -1,0 +1,49 @@
+.NavBar {
+    display: flex;
+    align-items: center; /* Ensures vertical centering */
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px; /* Sets a fixed height for the navbar */
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.logo {
+    height: 95px; /* Adjust based on your logo's aspect ratio */
+    width: 95px; /* Ensures logo is square */
+    object-fit: contain; /* Keeps the logo within bounds */
+    margin-left:70px;
+}
+
+.brandName {
+    font-size: 20px;
+    font-weight: bold;  
+
+}
+
+.navButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right:70px;
+}
+
+.navButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Flex container for items on the right */
+.NavBar > div {
+    display: flex;
+    align-items: center; /* Aligns buttons vertically in center */
+    gap: 10px;
+}
