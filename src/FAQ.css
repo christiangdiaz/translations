@@ -1,0 +1,80 @@
+/* FAQ.css */
+.faq-container {
+    max-width: 900px; /* increased width for more space */
+    margin: 30px auto;
+    padding: 2.5rem;
+    color: #f8f9fa; /* Lighter text color for better readability */
+    background-color: #212529; /* Darker shade for background */
+    border-radius: 10px; /* Slightly larger border radius for softer edges */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* More prominent shadow for depth */
+}
+
+.faq-container h2 {
+    font-size: 2.5rem; /* Larger font size for header */
+    margin-bottom: 2.5rem;
+    font-weight: 500; /* Slightly bolder */
+}
+
+.faq-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.faq-question {
+    font-size: 1.2rem; /* Larger font size */
+    font-weight: 600; /* Bolder */
+    margin: 1.5rem 0; /* More space between questions */
+    cursor: pointer;
+    position: relative;
+    padding-left: 40px; /* Increased padding */
+    transition: color 0.3s ease;
+}
+
+.faq-question::before {
+    content: '?';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #fab005; /* Brighter icon color */
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.faq-question:hover, .faq-question.active {
+    color: #fab005; /* Match the icon color */
+}
+
+.faq-answer {
+    font-size: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+    padding-left: 40px; /* Aligned with question */
+    font-weight: 300;
+    color: #dee2e6; /* Slightly lighter color for contrast */
+}
+
+.faq-answer.active {
+    max-height: 150px; /* Adjust based on content size */
+    padding-top: 1rem; /* More padding on top when active */
+}
+
+.arrow{
+    margin-left:10px;
+
+}
+
+@media (max-width: 768px) {
+    .faq-container {
+        padding: 1.5rem;
+    }
+
+    .faq-container h2 {
+        font-size: 2rem;
+    }
+
+    .faq-question {
+        font-size: 1rem;
+    }
+}

@@ -14,9 +14,6 @@
     transition: transform 0.3s ease; /* Smooth transition for scale on hover */
 }
 
-.services-image img:hover {
-    transform: scale(1.05); /* Slightly enlarges the image on hover for an interactive effect */
-}
 
 .services-content {
     background-color: #f3f4f6;
