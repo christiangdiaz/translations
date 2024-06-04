@@ -1,8 +1,10 @@
 import React from 'react';
 import PALogo from './PaLogo2.jpg';
 import './NavBar.css';
+import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
+  const navigate = useNavigate();
   return (
     <div className="NavBar">
         <div className="leftContainer">
@@ -10,10 +12,9 @@ const NavBar = () => {
             <h2 className='brandName'>Perfect Accent</h2>
         </div>
         <div className="rightContainer">
-            <button className='navButton'>Home</button>
-            <button className='navButton'>About Us</button>
-            <button className='navButton'>Services</button>
-            <button className='navButton'>Contact</button>
+            <button className='navButton' onClick={() => navigate('/')}>Home</button>
+            <button className='navButton' onClick={() => navigate('/AboutUs')}>About Us</button>
+            <button className='navButton' onClick={() => navigate('/OurServices')}>Services</button>
         </div>
     </div>
   );

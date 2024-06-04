@@ -1,69 +1,71 @@
-.Imgcontainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    color: #fff;
-    height: 220px; /* Adjusted height */
-    background: url('./PALogoFinal.jpg') center center no-repeat;
-    background-size: cover;
-    text-shadow: 0px 4px 3px rgba(0,0,0,0.4);
-    padding-left: 10%;
-    padding-top: 22%; /* Reduced to bring the content up */
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .Imgcontainer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0;
-    pointer-events: none;
-  }
-  
-  
-  .subtext {
-    font-size: 25px; /* Adjusted font size */
-    font-weight:bold;
-    color: #dfd1be;
-    margin-bottom: 10px; /* Reduced bottom margin */
-    z-index: 1;
+body {
+  background-color: #dfd1be;
+  font-family: 'Arial', sans-serif;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
 
+.Imgcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  color: #fff;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  background: url('./PALogoFinal.jpg') center center no-repeat;
+  background-size: cover;
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.Imgcontainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.subtext {
+  font-size: 25px; /* Adjusted font size */
+  font-weight: bold;
+  color: #dfd1be;
+  margin-bottom: 10px; /* Reduced bottom margin */
+  z-index: 1;
+  text-align: center; /* Center text */
+}
+
+.button {
+  padding: 0.75rem 1.5rem; /* Adjusted padding */
+  font-size: 1rem;
+  color: #fff;
+  background: #FF6A00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .Imgcontainer {
+    padding-left: 5%; /* Less padding on smaller screens */
+    padding-top: 25%; /* Increase padding-top to center content vertically on smaller screens */
   }
-  
+
+  .subtext {
+    font-size: 1.25rem; /* Smaller subtext on smaller screens */
+  }
+
   .button {
-    padding: 0.75rem 1.5rem; /* Adjusted padding */
-    font-size: 1rem;
-    color: #fff;
-    background: #FF6A00;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top:5px;
-    align-items: center;
-    position: relative;
-    z-index: 1;
+    padding: 0.5rem 1rem; /* Smaller button on smaller screens */
   }
-  @media (max-width: 768px) {
-    .ImgContainer {
-      padding-left: 5%; /* Less padding on smaller screens */
-      padding-top: 25%; /* Increase padding-top to center content vertically on smaller screens */
-    }
-  
-    .header {
-      font-size: 3rem; /* Smaller header on smaller screens */
-    }
-  
-    .subtext {
-      font-size: 1.25rem; /* Smaller subtext on smaller screens */
-    }
-  
-    .button {
-      padding: 0.5rem 1rem; /* Smaller button on smaller screens */
-    }
-  }
+}
