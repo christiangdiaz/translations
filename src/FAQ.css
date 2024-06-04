@@ -3,6 +3,7 @@
     max-width: 900px; /* increased width for more space */
     margin: 30px auto;
     padding: 2.5rem;
+    margin-top:5px;
     color: #f8f9fa; /* Lighter text color for better readability */
     background-color: #212529; /* Darker shade for background */
     border-radius: 10px; /* Slightly larger border radius for softer edges */
