@@ -1,18 +1,54 @@
 import React, { useState } from 'react';
-import './GetStarted.css';  // Make sure to include the path to your CSS file
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { collection, addDoc } from "firebase/firestore";
+import './GetStarted.css';
+import { storage, db } from './firebase';  // Ensure the path is correct
 
 function GetStarted() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [file, setFile] = useState(null);
+    const [uploadProgress, setUploadProgress] = useState(0);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('Submitting the following:');
-        console.log(`Name: ${name}`);
-        console.log(`Email: ${email}`);
-        console.log(`File: ${file ? file.name : 'No file selected'}`);
-        
+
+        if (!file) {
+            console.log('No file selected');
+            return;
+        }
+
+        const storageRef = ref(storage, `uploads/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on('state_changed', 
+            (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                setUploadProgress(progress);
+                console.log('Upload is ' + progress + '% done');
+            }, 
+            (error) => {
+                console.error('Upload failed', error);
+            }, 
+            async () => {
+                const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+                console.log('File available at', downloadURL);
+
+                // Save name, email, and file URL to Firestore
+                try {
+                    await addDoc(collection(db, 'uploads'), {
+                        name: name,
+                        email: email,
+                        fileURL: downloadURL,
+                        timestamp: new Date(),
+                    });
+                    console.log('Document successfully written!');
+                } catch (e) {
+                    console.error('Error adding document: ', e);
+                }
+            }
+        );
+
         setName('');
         setEmail('');
         setFile(null);
@@ -56,6 +92,7 @@ function GetStarted() {
                     />
                 </div>
                 <button type="submit">Submit</button>
+                <div>Upload Progress: {uploadProgress}%</div>
             </form>
         </div>
     );
