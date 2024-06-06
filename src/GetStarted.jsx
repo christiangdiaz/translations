@@ -8,13 +8,16 @@ function GetStarted() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [file, setFile] = useState(null);
+    const [languages, setLanguages] = useState('');
+    const [error, setError] = useState(null);
     const [uploadProgress, setUploadProgress] = useState(0);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setError(null); // Clear previous errors
 
         if (!file) {
-            console.log('No file selected');
+            setError('No file selected');
             return;
         }
 
@@ -25,32 +28,29 @@ function GetStarted() {
             (snapshot) => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 setUploadProgress(progress);
-                console.log('Upload is ' + progress + '% done');
             }, 
             (error) => {
-                console.error('Upload failed', error);
+                setError(`Upload failed: ${error.message}`);
             }, 
             async () => {
-                const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-                console.log('File available at', downloadURL);
-
-                // Save name, email, and file URL to Firestore
                 try {
+                    const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
                     await addDoc(collection(db, 'uploads'), {
                         name: name,
                         email: email,
                         fileURL: downloadURL,
+                        information: languages,
                         timestamp: new Date(),
                     });
-                    console.log('Document successfully written!');
                 } catch (e) {
-                    console.error('Error adding document: ', e);
+                    setError(`Error adding document: ${e.message}`);
                 }
             }
         );
 
         setName('');
         setEmail('');
+        setLanguages('');
         setFile(null);
     };
 
@@ -83,6 +83,16 @@ function GetStarted() {
                     />
                 </div>
                 <div>
+                    <label htmlFor="languages">Languages:</label>
+                    <input
+                        type="text"
+                        id="languages"
+                        value={languages}
+                        onChange={(e) => setLanguages(e.target.value)}
+                        required
+                    />
+                </div>
+                <div>
                     <label htmlFor="file">File:</label>
                     <input
                         type="file"
@@ -93,6 +103,7 @@ function GetStarted() {
                 </div>
                 <button type="submit">Submit</button>
                 <div>Upload Progress: {uploadProgress}%</div>
+                {error && <div className="error">Error: {error}</div>}
             </form>
         </div>
     );
