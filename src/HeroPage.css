@@ -1,0 +1,113 @@
+.MainContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.HeroMain {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.ImageContainer {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.IMG {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
+.HeroMain::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.OverlayContent {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.OverlayContent .ImgText, .OverlayContent .ImgTxt {
+    margin: 10px 0;
+}
+
+.OverlayContent .button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.OverlayContent .button:hover {
+    background-color: #ddd;
+}
+
+.ScrollableContent {
+    margin-top: 100vh;
+    padding: 20px;
+    background-color: #f0f0f0;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .HeroMain {
+        height: auto;
+        align-items: flex-end;
+    }
+
+    .OverlayContent {
+        padding: 10px;
+    }
+
+    .OverlayContent .ImgText, .OverlayContent .ImgTxt {
+        font-size: 14px;
+    }
+
+    .OverlayContent .button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .IMG {
+        object-fit: contain;
+    }
+}

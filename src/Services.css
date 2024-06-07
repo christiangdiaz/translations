@@ -6,8 +6,8 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: left;
-    overflow-y: auto; /* Enable vertical scrolling */
-    height: calc(100vh - 120px); /* Adjusted height accounting for fixed navbar */
+    overflow-y: auto; 
+    height: calc(100vh - 120px); 
 }
 
 .new-services-container h1 {
@@ -61,8 +61,8 @@
 
 @media (max-width: 768px) {
     .new-services-container {
-        padding: 100px 20px 20px; /* Adjust padding for smaller screens */
-        height: calc(100vh - 100px); /* Adjust height for smaller screens */
+        padding: 100px 20px 20px; 
+        height: calc(100vh - 100px); 
     }
 
     .new-services-container h1 {
