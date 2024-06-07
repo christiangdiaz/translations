@@ -13,6 +13,7 @@ import MainPage from './MainPage';
 function App() {
   return (
     <div className="App">
+      <div className='Components'>
       <Router>
         <Routes>
           <Route path='/' element={<div><MainPage/></div>}/>
@@ -21,6 +22,7 @@ function App() {
           <Route path='/OurServices' element={<><NavBar/><Services/></>} />
         </Routes>
       </Router>
+        </div>
     </div>
   );
 }

@@ -1,10 +1,10 @@
 .Imgcontainer {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
+  align-items: center;
+  justify-content: center;
   color: #fff;
-  height: 100vh; /* Full viewport height */
+  height: 100vw; /* Full viewport height */
   width: 100vw; /* Full viewport width */
   background: url('./PALogoFinal.jpg') center center no-repeat; /* Set background image */
   background-size: cover; /* Ensure the image covers the entire container */
@@ -13,7 +13,8 @@
   overflow: hidden; /* Ensure no overflow */
   margin: 0; /* Remove default margin */
   padding: 0; /* Remove default padding */
-  margin-top:1400px;
+  z-index: 1; /* Adjust z-index if necessary */
+  margin-top:1271px;
 }
 
 .Imgcontainer::before {
@@ -33,7 +34,8 @@
   font-weight: bold;
   color: #dfd1be;
   z-index: 1; /* Ensure it is above the overlay */
-  text-align: center; /* Center text */
+  text-align: center; /* Center text horizontally */
+  margin: 12px;
 }
 
 .button {
@@ -45,15 +47,16 @@
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
-  align-items: center;
   position: relative;
-  z-index: 1; /* Ensure it is above the overlay */
+  z-index: 1; 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1500px) {
   .Imgcontainer {
     padding-left: 5%; /* Less padding on smaller screens */
     padding-top: 5%; /* Adjust padding-top for smaller screens */
+    height: auto; /* Adjust height for smaller screens */
+    width: 100vw; /* Full width for smaller screens */
   }
 
   .subtext {

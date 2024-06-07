@@ -8,6 +8,29 @@ const ImgContainer = () => {
   
   return (
     <div className="Imgcontainer">
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <p className="subtext">Fluent Communication Across Borders</p>
       <p className="subtext">Expert Translation Services in Spanish, English, and Portuguese</p>
       <button className="button" onClick={() => navigate('/GetStarted')}>Get Started</button>
